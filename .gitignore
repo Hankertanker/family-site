@@ -39,3 +39,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# photos & images
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.avif
+*.heic
+*.heif
+*.bmp
+*.tiff
+*.tif
+*.raw
+*.cr2
+*.nef
+*.arw
