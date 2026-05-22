@@ -62,3 +62,7 @@ next-env.d.ts
 *.cr2
 *.nef
 *.arw
+
+
+# railway
+.railway/
