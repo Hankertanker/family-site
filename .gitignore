@@ -40,6 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local data, uploads & backups (keep private)
+/data/
+/uploads/
+/backups/
+/scripts/
+
 # photos & images
 *.jpg
 *.jpeg

@@ -1,26 +1,39 @@
-import type { Metadata, Viewport } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
+import { getSession, getSessionToken } from '@/lib/auth';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: "Family Site",
-  description: "Welcome to our family site",
+  manifest: '/manifest.json',
+  title: '我们的家 — 家庭时光记录',
+  description: '记录和分享家庭的美好时光',
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getSession();
+  const sessionToken = await getSessionToken();
+
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="zh-CN" className="h-full antialiased">
+      <body className="min-h-full flex flex-col">
+        <Header authenticated={!!session} />
+        <main className="flex-1 animate-page">{children}</main>
+        <Footer />
+
+        {/* Inject session token for client-side auth */}
+        {sessionToken && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.__SESSION_TOKEN="${sessionToken}";`,
+            }}
+          />
+        )}
+      </body>
     </html>
   );
 }
