@@ -1,6 +1,6 @@
 [build]
   builder = "nixpacks"
-  buildCommand = "npm run build -- --webpack"
+  buildCommand = "npx next build --webpack"
 
 [deploy]
   startCommand = "npx next start -p $PORT"
