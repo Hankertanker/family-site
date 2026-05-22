@@ -4,10 +4,6 @@
 
 [deploy]
   startCommand = "npx next start -p $PORT"
-  healthcheckPath = "/"
 
 [service]
   port = 3000
-
-[mounts]
-  data = "/app/data"

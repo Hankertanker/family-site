@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python3", "nodejs", "gcc"]
+nixPkgs = ["python3", "nodejs", "gcc", "gnumake"]
 
 [phases.install]
-cmds = ["npm install"]
+cmds = ["npm install --include=dev"]
